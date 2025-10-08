@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Explorer | Rooms</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style3.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav__logo">Travel Explorer</div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#service">Services</a></li>
+      <li><a href="#explore">Explore</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="Listing.html">MyBookings</a></li>
+    </ul>
+    <div class="nav__menu__btn" id="menu-btn">
+      <i class="ri-menu-line"></i>
+    </div>
+  </nav>
+
+  <!-- ================= ROOMS SECTION ================= -->
+  <section class="section__container rooms__section" id="rooms">
+    <h2 class="section__header">Choose Your Perfect Stay</h2>
+    <p class="section__subheader">
+      Whether you’re traveling solo, with friends, or with family, we have the perfect room waiting for you.
+    </p>
+
+    <div class="rooms__grid">
+      <!-- Room 1 -->
+      <div class="room__card">
+        <img src="images/room2p.jpg" alt="Room for 2 people" />
+        <div class="room__details">
+          <h4>Room for 2 People</h4>
+          <p>Ideal for couples or friends. Comes with a king-size bed, balcony view, and free Wi-Fi.</p>
+          <h5>₹2,800 / night</h5>
+          <button class="btn book__btn">Book Now</button>
+        </div>
+      </div>
+
+      <!-- Room 2 -->
+      <div class="room__card">
+        <img src="images/room3p.jpg" alt="Room for 3 people" />
+        <div class="room__details">
+          <h4>Room for 3 People</h4>
+          <p>Comfortable triple room with spacious interiors and complimentary breakfast.</p>
+          <h5>₹3,500 / night</h5>
+          <button class="btn book__btn">Book Now</button>
+        </div>
+      </div>
+
+      <!-- Room 3 -->
+      <div class="room__card">
+        <img src="images/familyroom.jpg" alt="Family Room" />
+        <div class="room__details">
+          <h4>Family Room</h4>
+          <p>Perfect for family vacations. Includes 2 king beds, a living area, and scenic views.</p>
+          <h5>₹5,500 / night</h5>
+          <button class="btn book__btn">Book Now</button>
+        </div>
+      </div>
+
+      <!-- Room 4 -->
+      <div class="room__card">
+        <img src="images/deluxe.jpg" alt="Deluxe Room" />
+        <div class="room__details">
+          <h4>Deluxe Room</h4>
+          <p>Luxurious comfort with private balcony, pool access, and a mini bar.</p>
+          <h5>₹4,200 / night</h5>
+          <button class="btn book__btn">Book Now</button>
+        </div>
+      </div>
+
+      <!-- Room 5 -->
+      <div class="room__card">
+        <img src="images/suite.jpg" alt="Luxury Suite" />
+        <div class="room__details">
+          <h4>Luxury Suite</h4>
+          <p>Premium suite with jacuzzi, ocean view, and personalized service.</p>
+          <h5>₹7,500 / night</h5>
+          <button class="btn book__btn">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ================= BOOKING POPUP ================= -->
+  <div class="booking__popup" id="booking-popup">
+    <div class="popup__content">
+      <span class="close__btn" id="close-popup">&times;</span>
+      <h3>Book Your Stay</h3>
+      <p id="selected-room"></p>
+      <form class="booking__form">
+        <label>Check-In Date</label>
+        <input type="date" required />
+
+        <label>Check-Out Date</label>
+        <input type="date" required />
+
+        <label>Guests</label>
+        <input type="number" min="1" max="10" placeholder="Number of guests" required />
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" required />
+
+        <label>Email</label>
+        <input type="email" placeholder="Your email" required />
+
+        <button type="submit" class="btn">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Travel Explorer | Designed with ❤️ for your perfect journey.</p>
+  </footer>
+
+  <script>
+    // ====== Mobile Menu ======
+    const menuBtn = document.getElementById("menu-btn");
+    const navLinks = document.getElementById("nav-links");
+    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+
+    // ====== Booking Popup ======
+    const popup = document.getElementById("booking-popup");
+    const closePopup = document.getElementById("close-popup");
+    const roomButtons = document.querySelectorAll(".book__btn");
+    const selectedRoom = document.getElementById("selected-room");
+
+    roomButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const room = e.target.closest(".room__card").getAttribute("data-room");
+        selectedRoom.textContent = `Selected Room: ${room}`;
+        popup.classList.add("open");
+      });
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.classList.remove("open");
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) popup.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
+
